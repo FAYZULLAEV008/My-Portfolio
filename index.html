@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Foziljon Fayzullayev — Portfolio</title>
+  <meta name="description" content="Foziljon Fayzullayev — Web Developer & Designer. I create modern and user-friendly web pages and designs.">
+  <style>
+    :root{
+      --bg:#0b0f13;
+      --card:#0f1418;
+      --muted:#9aa6a8;
+      --accent:#00ffb2;
+      --accent-2:#07b77a;
+      --glass: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Poppins", "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color: #e7f7f2;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-y:auto;
+    }
+
+    /* --- Wave animated background --- */
+    .bg-wrap{
+      position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+      background: radial-gradient(800px 400px at 10% 10%, rgba(0,255,178,0.06), transparent 10%),
+                  radial-gradient(700px 350px at 90% 80%, rgba(0,120,255,0.04), transparent 10%);
+    }
+    .wave{
+      position:absolute;left:-20%;top:-10%;width:140%;height:140%;filter:blur(48px);opacity:0.8;
+      background: linear-gradient(90deg, rgba(0,255,178,0.12), rgba(0,140,255,0.08) 35%, rgba(134,74,255,0.06) 70%, rgba(0,255,178,0.05));
+      transform: rotate(0deg);
+      animation: waveMove 14s linear infinite;
+      mix-blend-mode: screen;
+    }
+    .wave.wave-2{
+      top:10%; left:-10%; animation-duration:20s; filter:blur(64px); opacity:0.7; transform: rotate(12deg);
+    }
+    .wave.wave-3{
+      top:40%; left:-30%; animation-duration:26s; filter:blur(88px); opacity:0.6; transform: rotate(-8deg);
+    }
+    @keyframes waveMove{
+      0%{ transform: translateX(-10%) rotate(0deg) }
+      50%{ transform: translateX(10%) rotate(6deg) }
+      100%{ transform: translateX(-10%) rotate(0deg) }
+    }
+
+  
+    .page{
+      position:relative;z-index:2;
+      max-width:1100px;margin:32px auto;padding:28px;
+    }
+
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:16px;
+      box-shadow: 0 20px 50px rgba(2,6,10,0.7);
+      border:1px solid rgba(255,255,255,0.03);
+      overflow:hidden;
+    }
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid rgba(255,255,255,0.02);
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:44px;height:44px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:#06110d;
+      box-shadow:0 6px 18px rgba(0,255,178,0.12);
+      font-size:18px;
+    }
+    .brand h1{font-size:16px;margin:0;color:#dff6ef}
+    nav{display:flex;gap:16px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    nav a.active{color:var(--accent)}
+
+ 
+    .hero{
+      display:grid;grid-template-columns:1fr 420px;gap:36px;padding:42px;
+      align-items:center;
+    }
+
+    .intro small{color:var(--muted);display:block;margin-bottom:8px}
+    .name{font-size:40px;margin:0 0 6px 0;color:#dff6ef}
+    .role{font-size:18px;color:var(--muted);margin-bottom:14px}
+    .desc{color:var(--muted);line-height:1.6;margin-bottom:20px}
+    .cta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .btn{
+      background:linear-gradient(180deg,var(--accent),var(--accent-2));
+      border-radius:10px;padding:12px 18px;color:#06110d;font-weight:700;text-decoration:none;
+      box-shadow:0 10px 30px rgba(0,255,178,0.08);
+    }
+    .ghost{color:var(--muted);font-weight:600;text-decoration:none;padding:10px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
+
+    
+    .photo-3d{
+      width:420px;height:420px;display:flex;align-items:center;justify-content:center;
+      perspective:1000px;
+      position:relative;
+    }
+    .photo-card{
+      width:320px;height:380px;border-radius:20px;position:relative;
+      transform-style:preserve-3d;
+      transition: transform 0.2s cubic-bezier(.2,.9,.2,1);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+      border:1px solid rgba(255,255,255,0.03);
+      overflow:hidden;
+    }
+
+    
+    .photo-halo{
+      position:absolute;inset:-30px;z-index:0;filter:blur(36px);opacity:0.85;
+      background: radial-gradient(closest-side, rgba(0,255,178,0.18), rgba(0,255,178,0.06) 30%, transparent 60%);
+      mix-blend-mode: screen;
+      transition:opacity .3s;
+    }
+    .photo-layer{
+      position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;
+      transform:translateZ(40px);
+    }
+    .photo-layer img{
+      width:94%;height:94%;object-fit:cover;border-radius:12px;display:block;
+      transform: translateZ(48px) scale(1);
+      transition: transform 0.4s cubic-bezier(.2,.9,.2,1);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.6), 0 0 30px rgba(0,255,178,0.08) inset;
+      filter: drop-shadow(0 24px 80px rgba(0,0,0,0.7));
+    }
+
+    
+    .light-strip{
+      position:absolute;left:-40%;top:-40%;width:200%;height:200%;z-index:2;pointer-events:none;
+      background: conic-gradient(from 120deg, rgba(255,255,255,0.06), rgba(0,255,178,0.12), rgba(0,120,255,0.06), transparent 60%);
+      mix-blend-mode: screen;opacity:0.7;transform:translateZ(70px);
+      animation: stripRotate 6s linear infinite;
+      filter: blur(22px);
+    }
+    @keyframes stripRotate{ 0%{transform:rotate(0deg) translateZ(70px)} 100%{transform:rotate(360deg) translateZ(70px)} }
+
+  
+    .rim{
+      position:absolute;inset:0;border-radius:12px;z-index:3;pointer-events:none;
+      box-shadow: 0 0 40px rgba(0,255,178,0.08) inset;
+      mix-blend-mode:screen;
+      transform: translateZ(80px);
+    }
+
+  
+    .photo-card:hover{ transform: translateY(-6px) rotateX(3deg) rotateY(2deg) }
+
+   
+    .projects{
+      padding:34px 42px;background:linear-gradient(180deg, rgba(6,10,12,0.6), rgba(6,10,12,0.4));
+      border-top:1px solid rgba(255,255,255,0.02);
+    }
+    .projects h3{color:var(--accent);font-size:22px;margin:6px 0 12px 0}
+    .project-grid{display:flex;gap:14px;flex-wrap:wrap}
+    .proj{background:var(--card);padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);color:var(--accent);text-decoration:none;font-weight:600}
+    .proj:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
+
+ 
+    .contact{
+      padding:36px 42px;border-top:1px solid rgba(255,255,255,0.02);display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start;
+      background:linear-gradient(180deg, rgba(0,0,0,0.02), transparent);
+    }
+    .contact .left{flex:1;min-width:260px}
+    .contact .right{width:420px;min-width:260px}
+    form{display:flex;flex-direction:column;gap:12px}
+    input,textarea{
+      background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);
+      padding:12px;border-radius:10px;color:#e9f7ef;font-size:14px;
+    }
+    textarea{min-height:120px;resize:vertical}
+    .send{background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#06110d;padding:12px 16px;border-radius:10px;border:none;font-weight:700;cursor:pointer}
+    .send:active{transform:translateY(1px)}
+    .note{color:var(--muted);font-size:13px;margin-top:8px}
+
+    footer{padding:18px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr 1fr;gap:24px}
+      .photo-3d{width:360px;height:360px}
+    }
+    @media (max-width:720px){
+      .hero{grid-template-columns:1fr; padding:28px 18px}
+      .photo-3d{order:-1;margin-bottom:8px;width:100%;display:flex;justify-content:center}
+      .photo-card{width:80%;margin:auto}
+      .contact{flex-direction:column}
+      .contact .right{width:100%}
+      .page{padding:12px}
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-wrap" aria-hidden="true">
+    <div class="wave"></div>
+    <div class="wave wave-2"></div>
+    <div class="wave wave-3"></div>
+  </div>
+
+  <div class="page">
+    <div class="card" role="main" aria-label="Foziljon Fayzullayev Portfolio">
+      <header>
+        <div class="brand">
+          <div class="logo" aria-hidden="true">F</div>
+          <div>
+            <h1 style="margin:0;font-size:15px">Portfolio</h1>
+            <div style="color:var(--muted);font-size:13px">Foziljon Fayzullayev</div>
+          </div>
+        </div>
+        <nav>
+          <a href="#" class="active">Home</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <section class="hero" id="home">
+        <div class="intro">
+          <small>Hello, I'm</small>
+          <h2 class="name">Foziljon Fayzullayev</h2>
+          <div class="role">Web Developer & Designer</div>
+          <p class="desc">I create modern and user-friendly web pages and designs.</p>
+
+          <div class="cta">
+            <a class="btn" href="#contact" id="letsTalk">Let's Talk</a>
+            <a class="ghost" href="https://github.com/FAYZULLAEV008" target="_blank" rel="noopener">My GitHub</a>
+          </div>
+        </div>
+
+        <div class="photo-3d" id="photo3d" aria-hidden="false">
+          <div class="photo-card" id="photoCard" role="img" aria-label="Profile">
+            <div class="photo-halo"></div>
+            <div class="photo-layer">
+              <img id="profileImg" src="./123.jpg" alt="Foziljon Fayzullayev">
+            </div>
+            <div class="light-strip" aria-hidden="true"></div>
+            <div class="rim" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects" id="projects">
+        <h3>My Projects</h3>
+        <div class="project-grid" role="list">
+          <a class="proj" href="https://github.com/FAYZULLAEV008" target="_blank" rel="noopener">Main GitHub Profile</a>
+          <a class="proj" href="https://fayzullaev008.github.io/CAR-FOOD/" target="_blank" rel="noopener">Car-food</a>
+          <a class="proj" href="https://fayzullaev008.github.io/Anivoz.uz/" target="_blank" rel="noopener">Anivoz.uz</a>
+          <a class="proj" href="https://fayzullaev008.github.io/tm--work/" target="_blank" rel="noopener">Tm-work</a>
+          <a class="proj" href="https://kwork.com/user/foziljon_mlbb" target="_blank" rel="noopener">Kwork Profile</a>
+        </div>
+      </section>
+
+      <section class="contact" id="contact" aria-labelledby="contactHeading">
+        <div class="left">
+          <h3 id="contactHeading" style="color:var(--accent);margin:0 0 12px 0">Contact Me</h3>
+          <p class="note">Leave your details and message — I'll get back to you soon. (You can also use EmailJS for real sending — see JS comments.)</p>
+          <div style="margin-top:18px;color:var(--muted)">
+            <strong>GitHub:</strong> <a href="https://github.com/FAYZULLAEV008" target="_blank" rel="noopener" style="color:var(--accent)">FAYZULLAEV008</a><br>
+            <strong>Kwork:</strong> <a href="https://kwork.com/user/foziljon_mlbb" target="_blank" rel="noopener" style="color:var(--accent)">foziljon_mlbb</a>
+          </div>
+        </div>
+
+        <div class="right">
+          <form id="contactForm">
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+            <input type="email" id="email" name="email" placeholder="Your email" required>
+            <input type="text" id="subject" name="subject" placeholder="Subject">
+            <textarea id="message" name="message" placeholder="Your message" required></textarea>
+            <button type="submit" class="send">Send Message</button>
+            <div id="formStatus" class="note" role="status" aria-live="polite"></div>
+          </form>
+          <div class="note" style="margin-top:10px">Tip: This form will open your email client if EmailJS is not configured. To enable direct sending, add EmailJS config in the script section (instructions below).</div>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> Foziljon Fayzullayev — All rights reserved.
+      </footer>
+    </div>
+  </div>
+
+  <script>
+
+
+ 
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+ 
+    document.getElementById('letsTalk').addEventListener('click', function(e){
+      e.preventDefault();
+      document.querySelector('#contact').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    
+    (function(){
+      const card = document.getElementById('photoCard');
+      const container = document.getElementById('photo3d');
+
+      function handleMove(e){
+        const rect = container.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const x = (e.clientX - cx) / (rect.width/2);
+        const y = (e.clientY - cy) / (rect.height/2);
+        const rx = (-y * 8).toFixed(2);
+        const ry = (x * 12).toFixed(2);
+        const tz = 6;
+        card.style.transform = `translateY(-6px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(${tz}px)`;
+        // subtle move of inner image for depth
+        const img = card.querySelector('img');
+        img.style.transform = `translateZ(48px) translateX(${(x*6).toFixed(1)}px) translateY(${(y*6).toFixed(1)}px) scale(1.03)`;
+      }
+      function reset(){
+        card.style.transform = '';
+        const img = card.querySelector('img');
+        img.style.transform = '';
+      }
+      container.addEventListener('mousemove', handleMove);
+      container.addEventListener('mouseleave', reset);
+      container.addEventListener('touchmove', function(ev){
+        if(ev.touches && ev.touches[0]) handleMove(ev.touches[0]);
+      }, {passive:true});
+    })();
+
+    // ====== Contact form behavior
+    (function(){
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        status.textContent = 'Sending...';
+
+        // Collect data
+        const data = {
+          name: form.name.value.trim(),
+          email: form.email.value.trim(),
+          subject: form.subject.value.trim(),
+          message: form.message.value.trim()
+        };
+
+        
+        const EMAILJS_USER_ID = ''; 
+        const SERVICE_ID = 'YOUR_SERVICE_ID';
+        const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+
+        if(EMAILJS_USER_ID && window.emailjs){
+          // real send via EmailJS
+          try{
+            emailjs.init(EMAILJS_USER_ID);
+            emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+              from_name: data.name,
+              from_email: data.email,
+              subject: data.subject,
+              message: data.message
+            }).then(function(response){
+              status.textContent = 'Message sent — thank you!';
+              form.reset();
+            }, function(err){
+              console.error(err);
+              status.textContent = 'Send failed (EmailJS). Opening email client as fallback.';
+              openMailClient(data);
+            });
+          }catch(err){
+            console.error(err);
+            status.textContent = 'EmailJS error. Opening email client as fallback.';
+            openMailClient(data);
+          }
+        }else{
+          
+          openMailClient(data);
+        }
+      });
+
+      function openMailClient(data){
+        const subject = encodeURIComponent(data.subject || 'Contact from portfolio site');
+        let body = `Name: ${data.name}%0D%0AEmail: ${data.email}%0D%0A%0D%0A${encodeURIComponent(data.message)}`;
+        const mailto = `mailto:your-email@example.com?subject=${subject}&body=${body}`;
+        
+        window.location.href = mailto;
+      }
+    })();
+
+   
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(prefersReduced){
+        document.querySelectorAll('.wave').forEach(el => el.style.animation = 'none');
+        document.querySelectorAll('.light-strip').forEach(el => el.style.animation = 'none');
+      }
+    })();
+  </script>
+</body>
+</html>
