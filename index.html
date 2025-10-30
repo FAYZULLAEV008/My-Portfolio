@@ -14,6 +14,35 @@
       --accent-2:#07b77a;
       --glass: rgba(255,255,255,0.03);
     }
+    /* Project image style */
+.project-grid div {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  transition: 0.3s;
+  width: 220px;
+  text-align: center;
+}
+.project-grid div:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,255,178,0.12);
+}
+.qwe {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: 0.4s;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.project-grid div:hover .qwe {
+  filter: brightness(1.15) saturate(1.2);
+  transform: scale(1.03);
+}
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -25,7 +54,6 @@
       -moz-osx-font-smoothing:grayscale;
       overflow-y:auto;
     }
-
     /* --- Wave animated background --- */
     .bg-wrap{
       position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
@@ -255,22 +283,27 @@
         <h3>My Projects</h3>
         <div class="project-grid" role="list">
           <div>
+          <img class="qwe" src="./Снимок экрана 2025-10-30 083321.png" alt="Anime Shop rasmi">
           <a class="proj" href="https://fayzullaev008.github.io/tm--work/" target="_blank" rel="noopener">Tm-work</a>
           <a class="ghost" href="https://github.com/FAYZULLAEV008/tm--work" target="_blank" rel="noopener">Code</a>
           </div>
           <div>
+             <img class="qwe" src="./Снимок экрана 2025-10-30 083432.png" alt="Anime Shop rasmi">
           <a class="proj" href="https://fayzullaev008.github.io/Anime-shop/" target="_blank" rel="noopener">Anime shop</a>
           <a class="ghost" href="https://github.com/FAYZULLAEV008/Anime-shop" target="_blank" rel="noopener">Code</a>
           </div>
           <div>
+             <img class="qwe" src="./Снимок экрана 2025-10-30 083453.png" alt="Anime Shop rasmi">
           <a class="proj" href="https://fayzullaev008.github.io/Animax/" target="_blank" rel="noopener">Animax</a>
           <a class="ghost" href="https://github.com/FAYZULLAEV008/Animax" target="_blank" rel="noopener">Code</a>
           </div>
           <div>
+             <img class="qwe" src="./Снимок экрана 2025-10-30 083512.png" alt="Anime Shop rasmi">
           <a class="proj" href="https://fayzullaev008.github.io/Brigada/" target="_blank" rel="noopener">Brigada</a>
           <a class="ghost" href="https://github.com/FAYZULLAEV008/Brigada" target="_blank" rel="noopener">Code</a>
           </div>
            <div>
+             <img class="qwe" src="./Снимок экрана 2025-10-30 083531.png" alt="Anime Shop rasmi">
           <a class="proj" href="https://fayzullaev008.github.io/tetris/" target="_blank" rel="noopener">Tetris</a>
           <a class="ghost" href="https://github.com/FAYZULLAEV008/tetris" target="_blank" rel="noopener">Code</a>
           </div>
@@ -419,7 +452,6 @@
   </script>
 </body>
 </html>
-
 
 
 
